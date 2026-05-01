@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Camera</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- TITLE -->
+    <h2>🎥 Live Camera Detection</h2>
+    <p>Real-time AI Surveillance</p>
+
+    <!-- LIVE VIDEO -->
+    <div class="live-box">
+        <img id="liveFeed" src="/video_feed" alt="Live Feed">
+    </div>
+
+    <!-- STATUS -->
+    <p id="statusText" style="margin-top:10px; color:#aaa;">
+        🟢 Camera Running...
+    </p>
+
+    <!-- CONTROLS -->
+    <div class="live-controls">
+
+        <button onclick="stopCamera()" class="btn danger">
+            🛑 Stop Camera
+        </button>
+
+        <a href="/dashboard" class="btn">
+            ⬅ Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+function stopCamera() {
+    // Stop backend camera
+    fetch("/stop_camera");
+
+    // Stop UI feed immediately
+    document.getElementById("liveFeed").src = "";
+    document.getElementById("statusText").innerHTML = "🔴 Camera Stopped";
+
+    // optional redirect after 1 sec
+    setTimeout(() => {
+        window.location.href = "/dashboard";
+    }, 1000);
+}
+</script>
+
+</body>
+</html>

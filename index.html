@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Video Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- TITLE -->
+    <h2>🔴 AI Video Analyzer</h2>
+    <p>Security AI System - Detect suspicious activity</p>
+
+    <!-- LOGIN BUTTON -->
+    <a href="/login" class="nav-btn">👮 Officer Login</a>
+
+    <!-- UPLOAD FORM -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="video" required>
+        <br>
+        <button type="submit">Upload & Analyze</button>
+    </form>
+
+    <!-- EXTRA OPTIONS -->
+    <div class="nav-links">
+        <a href="/camera">🎥 Live Camera</a>
+        <a href="/dashboard">📊 Dashboard</a>
+    </div>
+
+    <br>
+    <small>Supports: MP4, AVI, JPG, PNG</small>
+
+</div>
+
+</body>
+</html>

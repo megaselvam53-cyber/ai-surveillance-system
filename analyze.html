@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analyze File</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- TITLE -->
+    <h2>📤 Upload & Analyze</h2>
+    <p>Select image or video for AI detection</p>
+
+    <!-- UPLOAD FORM -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="video" required>
+        <br>
+        <button type="submit">Analyze</button>
+    </form>
+
+    <!-- BACK -->
+    <br>
+    <a href="/dashboard" class="back-btn">⬅ Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

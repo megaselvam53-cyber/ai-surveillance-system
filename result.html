@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detection Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- TITLE -->
+    <h2>🔴 Detection Results</h2>
+
+    <!-- COUNT -->
+    <p class="result-count">Total Persons Detected: <b>{{ count }}</b></p>
+
+    <!-- ALERT MESSAGE -->
+    <div class="alert-box">
+        {% if "Suspicious" in alert %}
+            <p class="alert-danger">🚨 {{ alert }}</p>
+        {% elif "Person" in alert %}
+            <p class="alert-danger">⚠️ {{ alert }}</p>
+        {% elif "Phone" in alert %}
+            <p class="alert-danger">📱 {{ alert }}</p>
+        {% else %}
+            <p class="alert-safe">✅ {{ alert }}</p>
+        {% endif %}
+    </div>
+
+    <!-- IMAGE GRID -->
+    <div class="images">
+        {% if images %}
+            {% for img in images %}
+                <div class="image-card">
+                    <img src="/outputs/{{ img }}" alt="Detection Image">
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-image">No output images available</p>
+        {% endif %}
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="result-actions">
+
+        
+
+        <a href="/dashboard" class="btn">📊 Go to Dashboard</a>
+
+        <a href="/analyze" class="btn">🔁 Upload Again</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

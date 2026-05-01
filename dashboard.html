@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- TITLE -->
+    <h2>📊 Dashboard</h2>
+    <p>Welcome <b>{{ user }}</b> 👮‍♂️</p>
+
+    <!-- STATS -->
+    <div class="stats">
+
+        <div class="card">
+            <h3>Total Uploads</h3>
+            <p>{{ files }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Persons</h3>
+            <p>{{ persons }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Last Alert</h3>
+            <p>
+                {% if "Safe" in alert %}
+                    <span style="color:#4CAF50;">{{ alert }}</span>
+                {% else %}
+                    <span style="color:#ff4d4d;">{{ alert }}</span>
+                {% endif %}
+            </p>
+        </div>
+
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="actions">
+
+        <!-- Upload -->
+        <a href="/analyze" class="btn">📤 Upload File</a>
+
+        <!-- Live -->
+        <a href="/live" class="btn">🎥 Start Live</a>
+
+        <!-- Stop -->
+        <a href="/stop_camera" class="btn danger">🛑 Stop Live</a>
+
+        <!-- PDF (FIXED 🔥) -->
+        <a href="/download_pdf/upload" class="btn">📄  Download PDF Report</a>
+        <a href="/download_pdf/live" class="btn">🎥 Live Report</a>
+
+    </div>
+
+    <!-- STATUS -->
+    <div class="status-box">
+        <p>
+            {% if alert == "✅ Safe" %}
+                🟢 System Status: <b>Normal</b>
+            {% else %}
+                🔴 System Status: <b>Alert</b>
+            {% endif %}
+        </p>
+    </div>
+
+    <!-- AUTO REFRESH -->
+    <script>
+        setTimeout(function(){
+            window.location.reload();
+        }, 5000);
+    </script>
+
+    <!-- LOGOUT -->
+    <br>
+    <a href="/logout" class="back-btn">⬅ Logout</a>
+
+</div>
+
+</body>
+</html>
